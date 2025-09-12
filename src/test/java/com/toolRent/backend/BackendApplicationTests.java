@@ -1,4 +1,4 @@
-package com.kartingRM.backend;
+package com.toolRent.backend;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
