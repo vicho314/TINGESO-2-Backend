@@ -9,7 +9,7 @@ import java.util.List;
 import com.toolRent.backend.entities.FeeEntity;
 
 @Entity
-@Table(name = "tools")
+@Table(name = "tool")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -36,6 +36,7 @@ public class ToolEntity {
     //	joinColumns = @JoinColumn(name = "client_id"),
     //	inverseJoinColumns = @JoinColumn(name = "transaction_id")
     //	)
+    @JoinColumn(name = "fee_id", referencedColumnName = "id")
     private FeeEntity fee;
     private Integer stock;
 }

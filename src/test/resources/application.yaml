@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    url: "jdbc:h2:mem:dcbap"
+    username: "vicho314"
+    password: "mktrilogy27"
+  h2:
+    console:
+      enabled: true
+  jpa:
+    database-platform: "org.hibernate.dialect.H2Dialect"
+
+jdbc:
+  driverClassName: "org.h2.Driver"
+  username: "test"
+  password: "test"
+  #url: "jdbc:h2:mem:db";DB_CLOSE_DELAY=-1

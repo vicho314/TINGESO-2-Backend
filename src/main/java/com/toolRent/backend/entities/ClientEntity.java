@@ -9,7 +9,7 @@ import java.util.List;
 import com.toolRent.backend.entities.FeeEntity;
 
 @Entity
-@Table(name = "clients")
+@Table(name = "client")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

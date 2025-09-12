@@ -4,7 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import jakarta.persistence.*;
-import java.time.*;
+//import java.time.*;
+import java.util.Date;
 import java.util.List;
 import com.toolRent.backend.entities.UserEntity;
 import com.toolRent.backend.entities.ToolEntity;
@@ -26,12 +27,14 @@ public class KardexEntity {
     private String type; //#FIXME: specify types
     @Column(nullable = false)
     private Date movementDate;
-    @Column(nullable = false)
+    //@Column(nullable = false)
     @OneToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
     private UserEntity user;
     //private String rutLastDigit;
-    @Column(nullable = false)
+    //@Column(nullable = false)
     @OneToOne
+    @JoinColumn(name = "tool_id", referencedColumnName = "id")
     private ToolEntity tool;
 
 }
