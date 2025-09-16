@@ -1,6 +1,6 @@
 package com.toolRent.backend.repositories;
 
-import com.toolRent.backend.entities.UserEntity;
+import com.toolRent.backend.entities.EmployeeEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 //import org.springframework.data.jpa.repository.Modifying;
@@ -12,6 +12,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface UserRepository extends JpaRepository<UserEntity, Long> {
+public interface EmployeeRepository extends JpaRepository<EmployeeEntity, Long> {
 
 }

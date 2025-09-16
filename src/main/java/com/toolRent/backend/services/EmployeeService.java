@@ -1,8 +1,8 @@
 package com.toolRent.backend.services;
 
 //import com.toolRent.backend.services.AbstractService;
-import com.toolRent.backend.entities.UserEntity;
-import com.toolRent.backend.repositories.UserRepository;
+import com.toolRent.backend.entities.EmployeeEntity;
+import com.toolRent.backend.repositories.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,38 +11,38 @@ import java.time.*;
 import java.util.ArrayList;
 // get, save, update, delete
 @Service
-public class UserService{
+public class EmployeeService{
     @Autowired
-    private UserRepository userRepo;
+    private EmployeeRepository employeeRepo;
 
-    public UserService(UserRepository repo) {
+    public EmployeeService(EmployeeRepository repo) {
         //super(repo);
-	this.userRepo = repo;
+	this.employeeRepo = repo;
     }
     
-    public UserEntity getById(Long id){
-	return userRepo.findById(id).get();
+    public EmployeeEntity getById(Long id){
+	return employeeRepo.findById(id).get();
     }
 
-    public List<UserEntity> getAll(){
-	return (ArrayList<UserEntity>) userRepo.findAll();
+    public List<EmployeeEntity> getAll(){
+	return (ArrayList<EmployeeEntity>) employeeRepo.findAll();
     }
 
-    public boolean save(UserEntity newUser){
-        userRepo.save(newUser);
+    public boolean save(EmployeeEntity newEmployee){
+        employeeRepo.save(newEmployee);
 	return true;
     }
 
     //FIXME: assume it already exists?
     // Should the repo, service or controller do the check?
-    public boolean update(UserEntity newUser){
-	userRepo.save(newUser);
+    public boolean update(EmployeeEntity newEmployee){
+	employeeRepo.save(newEmployee);
 	return true;
     }
 
     public boolean delete(Long id){
         try {
-		userRepo.deleteById(id);
+		employeeRepo.deleteById(id);
 		return true;
 	
 	} catch (Exception e) {

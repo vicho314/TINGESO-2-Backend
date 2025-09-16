@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 //import java.time.*;
 import java.util.Date;
 import java.util.List;
-import com.toolRent.backend.entities.UserEntity;
+import com.toolRent.backend.entities.EmployeeEntity;
 import com.toolRent.backend.entities.ToolEntity;
 
 @Entity
@@ -29,8 +29,8 @@ public class KardexEntity {
     private Date movementDate;
     //@Column(nullable = false)
     @OneToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
-    private UserEntity user;
+    @JoinColumn(name = "employee_id", referencedColumnName = "id")
+    private EmployeeEntity employee;
     //private String rutLastDigit;
     //@Column(nullable = false)
     @OneToOne

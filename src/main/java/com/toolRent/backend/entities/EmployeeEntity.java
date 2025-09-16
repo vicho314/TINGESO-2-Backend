@@ -13,7 +13,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserEntity {
+public class EmployeeEntity {
 	// #FIXME: fix relations and notnull
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
