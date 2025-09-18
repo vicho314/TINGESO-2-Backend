@@ -21,20 +21,38 @@ public class ClientEntity {
     private Long id;
 
     //private String category;
-    @Column(unique = true, nullable = false)
+    @Column(nullable = false)
     private String name;
     @Column(nullable = false)
     private String telephone;
     @Column(nullable = false)
     private String mail;
     @Column(nullable = false)
-    private String clientState;
+    private Character clientState;
     //private String rutLastDigit;
-    @Column(nullable = false)
+    @Column(unique = true, nullable = false)
     private String rut;
     //@JoinTable(
     //	name = "client_transaction",
     //	joinColumns = @JoinColumn(name = "client_id"),
     //	inverseJoinColumns = @JoinColumn(name = "transaction_id")
     //	)
+
+    // FIXME: This should be checked against a DB!!
+    public boolean validState(){
+        if(this.clientState == null){
+		return false;
+    	}
+	if(this.clientState.isWhitespace(this.clientState)){
+		return false;
+	}
+	switch(this.clientState.toUpperCase(this.clientState)){
+		case 'A':
+		case 'R':
+			return true;
+		default: 
+			return false;
+	}
+	//return false;
+    }
 }

@@ -29,8 +29,13 @@ public class ClientService{
     }
 
     public boolean save(ClientEntity newClient){
-        clientRepo.save(newClient);
-	return true;
+        if(newClient.validState()){
+		clientRepo.save(newClient);
+		return true;
+	}
+	else{
+		return false;
+	}
     }
 
     //FIXME: assume it already exists?

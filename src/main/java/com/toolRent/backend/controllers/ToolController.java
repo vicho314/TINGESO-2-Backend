@@ -29,8 +29,8 @@ public class ToolController {
 	}	
 	
 	@PostMapping("/")
-	public boolean saveTool(@RequestBody ToolEntity tool){
-		boolean result = toolService.save(tool);
+	public ToolEntity saveTool(@RequestBody ToolEntity tool){
+		ToolEntity result = toolService.save(tool);
 		return result;
 	}
 
