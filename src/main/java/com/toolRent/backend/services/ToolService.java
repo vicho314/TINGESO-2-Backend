@@ -19,7 +19,7 @@ public class ToolService{
         //super(repo);
 	this.toolRepo = repo;
     }
-    
+
     public ToolEntity getById(Long id){
 	return toolRepo.findById(id).get();
     }
@@ -28,9 +28,12 @@ public class ToolService{
 	return (ArrayList<ToolEntity>) toolRepo.findAll();
     }
 
-    public boolean save(ToolEntity newTool){
-        toolRepo.save(newTool);
-	return true;
+    // FIXME: Null!! Use proper handler! -> Optional<>
+    public ToolEntity save(ToolEntity newTool){
+        if(newTool.validFields())
+		return toolRepo.save(newTool);
+	else
+		return null;
     }
 
     //FIXME: assume it already exists?
@@ -44,12 +47,16 @@ public class ToolService{
         try {
 		toolRepo.deleteById(id);
 		return true;
-	
+
 	} catch (Exception e) {
 		return false;
 		//throw new Exception(e.getMessage());
 	}
-	
+
     }
- 
+    // FIXME: Check Admin priv. in controller!!
+    public boolean takeDown(ToolEntity newTool){
+	newTool.setState('D'); // void is... pain.
+    	return this.update(newTool);
+    }
 }

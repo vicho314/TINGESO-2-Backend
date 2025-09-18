@@ -14,19 +14,19 @@ import com.toolRent.backend.entities.FeeEntity;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ToolEntity {
-	// #FIXME: fix relations and notnull
+    // #FIXME: fix relations and notnull
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(unique = true, nullable = false)
+    //@Column(unique = true, nullable = false)
     private Long id;
-
     //private String category;
     @Column(unique = true, nullable = false)
     private String name;
     @Column(nullable = false)
     private String category;
     @Column(nullable = false)
-    private String ini_state;
+    // FIXME: Translate this accordingly in frontend!
+    private Character state; //(A)vailable, (B)orrowed,(U)nderRepair,(D)own
     //private String rutLastDigit;
     @Column(nullable = false)
     private int replacementValue;
@@ -39,4 +39,35 @@ public class ToolEntity {
     @JoinColumn(name = "fee_id", referencedColumnName = "id")
     private FeeEntity fee;
     private Integer stock;
+
+    public boolean validState(){
+    	boolean result;
+    	if(this.state == null){
+    		return false;
+    	}
+    	if(this.state.isWhitespace(this.state)){
+    		return false;
+    	}
+    	// FIXME: this should be checked against DB! Not hardcoded!
+    	switch(this.state.toUpperCase(this.state)){
+    		case 'A':
+    		case 'B':
+    		case 'U':
+    		case 'D':
+    			result = true;
+    			break;
+    		default:
+    			result = false;
+    	}
+    	return result;
+    }
+
+    // FIXME: > or >= ??
+    public boolean validReplacement(){
+    	return this.replacementValue > 0;
+    }
+
+    public boolean validFields(){
+    	return this.validState() && this.validReplacement();
+    }
 }
