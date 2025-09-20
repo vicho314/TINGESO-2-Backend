@@ -29,6 +29,7 @@ public class ToolService{
     }
 
     // FIXME: Null!! Use proper handler! -> Optional<>
+    // FIXME: Add Kardex handler in controller!
     public ToolEntity save(ToolEntity newTool){
         if(newTool.validFields())
 		return toolRepo.save(newTool);

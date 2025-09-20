@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.List;
 import com.toolRent.backend.entities.EmployeeEntity;
 import com.toolRent.backend.entities.ToolEntity;
+import com.toolRent.backend.entities.LendEntity;
 
 @Entity
 @Table(name = "kardex")
@@ -31,6 +32,9 @@ public class KardexEntity {
     @OneToOne
     @JoinColumn(name = "employee_id", referencedColumnName = "id")
     private EmployeeEntity employee;
+    @OneToOne
+    @JoinColumn(name = "lend_id", referencedColumnName = "id")
+    private LendEntity lend;
     //private String rutLastDigit;
     //@Column(nullable = false)
     @OneToOne

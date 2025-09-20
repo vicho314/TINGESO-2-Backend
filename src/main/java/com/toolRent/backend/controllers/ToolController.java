@@ -2,6 +2,8 @@ package com.toolRent.backend.controllers;
 
 import com.toolRent.backend.entities.ToolEntity;
 import com.toolRent.backend.services.ToolService;
+import com.toolRent.backend.entities.KardexEntity;
+import com.toolRent.backend.services.KardexService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +19,8 @@ public class ToolController {
 	//get,save,update,delete, getRut,getName, getAllBirthday
 	@Autowired
 	ToolService toolService;
+	@Autowired
+	KardexService kardexService;
 
 	@GetMapping("/")
 	public List<ToolEntity> listTools() {
@@ -31,6 +35,7 @@ public class ToolController {
 	@PostMapping("/")
 	public ToolEntity saveTool(@RequestBody ToolEntity tool){
 		ToolEntity result = toolService.save(tool);
+		//kardexService.update(user,tool)
 		return result;
 	}
 
@@ -45,4 +50,10 @@ public class ToolController {
 		boolean result = toolService.delete(id);
 		return result;
 	}
+
+	@PostMapping("/")
+        public boolean takeDown(@RequestBody ToolEntity tool){
+                boolean result = toolService.takeDown(tool);
+                return result;
+        }
 }

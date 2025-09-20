@@ -5,6 +5,8 @@ import com.toolRent.backend.entities.KardexEntity;
 import com.toolRent.backend.repositories.KardexRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.toolRent.backend.services.ToolService;
+import com.toolRent.backend.entities.ToolEntity;
 
 import java.util.List;
 import java.time.*;
@@ -14,6 +16,8 @@ import java.util.ArrayList;
 public class KardexService{
     @Autowired
     private KardexRepository kardexRepo;
+    @Autowired
+    private ToolService toolService;
 
     public KardexService(KardexRepository repo) {
         //super(repo);
@@ -28,9 +32,9 @@ public class KardexService{
 	return (ArrayList<KardexEntity>) kardexRepo.findAll();
     }
 
-    public boolean save(KardexEntity newKardex){
-        kardexRepo.save(newKardex);
-	return true;
+    public KardexEntity save(KardexEntity newKardex){
+        KardexEntity kardex = kardexRepo.save(newKardex);
+	return kardex;
     }
 
     //FIXME: assume it already exists?
@@ -51,5 +55,39 @@ public class KardexService{
 	}
 	
     }
- 
+    
+    public KardexEntity saveTool(KardexEntity newKardex){
+        ToolEntity newTool = newKardex.getTool();
+	newKardex.setTool(toolService.save(newTool));
+	newKardex.setType('I'); //Ingress
+	return this.save(newKardex);
+    }
+    
+    public KardexEntity takeDownTool(KardexEntity newKardex){
+        ToolEntity tool = newKardex.getTool();
+	if(tool.getStock() <= 1){
+		tool.setStock(0);
+		tool.setState('D');
+	}	
+	else{
+		tool.setStock(tool.getStock()-1);
+	}
+	newKardex.setTool(toolService.update(tool));
+	newKardex.setType('T'); //TakeDown
+	return this.save(newKardex);
+    }
+    
+    public KardexEntity repairTool(KardexEntity newKardex){
+        ToolEntity newTool = newKardex.getTool();
+	if(tool.getStock() <= 1){
+		tool.setStock(0);
+		tool.setState('R');
+	}	
+	else{
+		tool.setStock(tool.getStock()-1);
+	}
+	newKardex.setTool(toolService.update(tool));
+	newKardex.setType('R'); //Repair
+	return this.save(newKardex);
+    }
 }
