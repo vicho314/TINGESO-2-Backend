@@ -45,4 +45,23 @@ public class KardexController {
 		boolean result = kardexService.delete(id);
 		return result;
 	}
+
+	@PostMapping("/saveTool/")
+	public KardexEntity saveTool(@RequestBody KardexEntity kardex){
+		KardexEntity result = kardexService.saveTool(kardex);
+		return result;
+	}
+	
+	@PostMapping("/takeDownTool/")
+	public KardexEntity takeDownTool(@RequestBody KardexEntity kardex){
+		KardexEntity result = kardexService.takeDownTool(kardex);
+		return result;
+	}
+	
+	@PostMapping("/repairTool/")
+	public KardexEntity repairTool(@RequestBody KardexEntity kardex){
+		KardexEntity result = kardexService.repairTool(kardex);
+		return result;
+	}
+
 }

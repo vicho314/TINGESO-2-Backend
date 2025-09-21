@@ -2,8 +2,6 @@ package com.toolRent.backend.controllers;
 
 import com.toolRent.backend.entities.ToolEntity;
 import com.toolRent.backend.services.ToolService;
-import com.toolRent.backend.entities.KardexEntity;
-import com.toolRent.backend.services.KardexService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
