@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.toolRent.backend.services.ToolService;
 import com.toolRent.backend.entities.ToolEntity;
+import com.toolRent.backend.services.LendService;
+import com.toolRent.backend.entities.LendEntity;
+
 
 import java.util.List;
 import java.time.*;
@@ -90,4 +93,10 @@ public class KardexService{
 	newKardex.setType('R'); //Repair
 	return this.save(newKardex);
     }
+
+    public KardexEntity saveLend(KardexEntity newKardex){
+	LendEntity newLend = newKardex.getLend();
+	newKardex.setTool(toolService.save(newLend));
+	newKardex.setType('L'); //Lend
+	return this.save(newKardex);
 }

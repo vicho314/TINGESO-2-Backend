@@ -63,5 +63,10 @@ public class KardexController {
 		KardexEntity result = kardexService.repairTool(kardex);
 		return result;
 	}
-
+	
+	@PostMapping("/saveLend/")
+	public KardexEntity saveLend(@RequestBody KardexEntity kardex){
+		KardexEntity result = kardexService.saveLend(kardex);
+		return result;
+	}
 }
