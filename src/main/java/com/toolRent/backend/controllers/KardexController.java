@@ -29,14 +29,14 @@ public class KardexController {
 	}	
 	
 	@PostMapping("/")
-	public boolean saveKardex(@RequestBody KardexEntity kardex){
-		boolean result = kardexService.save(kardex);
+	public KardexEntity saveKardex(@RequestBody KardexEntity kardex){
+		KardexEntity result = kardexService.save(kardex);
 		return result;
 	}
 
 	@PutMapping("/")
-	public boolean updateKardex(@RequestBody KardexEntity kardex){
-		boolean result = kardexService.update(kardex);
+	public KardexEntity updateKardex(@RequestBody KardexEntity kardex){
+		KardexEntity result = kardexService.update(kardex);
 		return result;
 	}
 

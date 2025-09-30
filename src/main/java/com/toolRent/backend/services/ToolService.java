@@ -39,9 +39,8 @@ public class ToolService{
 
     //FIXME: assume it already exists?
     // Should the repo, service or controller do the check?
-    public boolean update(ToolEntity newTool){
-	toolRepo.save(newTool);
-	return true;
+    public ToolEntity update(ToolEntity newTool){
+	return toolRepo.save(newTool);
     }
 
     public boolean delete(Long id){
@@ -56,7 +55,7 @@ public class ToolService{
 
     }
     // FIXME: Check Admin priv. in controller!!
-    public boolean takeDown(ToolEntity newTool){
+    public ToolEntity takeDown(ToolEntity newTool){
 	newTool.setState('D'); // void is... pain.
     	return this.update(newTool);
     }

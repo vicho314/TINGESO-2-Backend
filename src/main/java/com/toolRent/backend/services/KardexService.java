@@ -21,6 +21,8 @@ public class KardexService{
     private KardexRepository kardexRepo;
     @Autowired
     private ToolService toolService;
+    @Autowired
+    private LendService lendService;
 
     public KardexService(KardexRepository repo) {
         //super(repo);
@@ -42,9 +44,8 @@ public class KardexService{
 
     //FIXME: assume it already exists?
     // Should the repo, service or controller do the check?
-    public boolean update(KardexEntity newKardex){
-	kardexRepo.save(newKardex);
-	return true;
+    public KardexEntity update(KardexEntity newKardex){
+	return kardexRepo.save(newKardex);
     }
 
     public boolean delete(Long id){
@@ -62,7 +63,7 @@ public class KardexService{
     public KardexEntity saveTool(KardexEntity newKardex){
         ToolEntity newTool = newKardex.getTool();
 	newKardex.setTool(toolService.save(newTool));
-	newKardex.setType('I'); //Ingress
+	newKardex.setType("I"); //Ingress
 	return this.save(newKardex);
     }
     
@@ -76,27 +77,28 @@ public class KardexService{
 		tool.setStock(tool.getStock()-1);
 	}
 	newKardex.setTool(toolService.update(tool));
-	newKardex.setType('T'); //TakeDown
+	newKardex.setType("T"); //TakeDown
 	return this.save(newKardex);
     }
     
     public KardexEntity repairTool(KardexEntity newKardex){
-        ToolEntity newTool = newKardex.getTool();
+        ToolEntity tool = newKardex.getTool();
 	if(tool.getStock() <= 1){
 		tool.setStock(0);
 		tool.setState('R');
-	}	
+	}
 	else{
 		tool.setStock(tool.getStock()-1);
 	}
 	newKardex.setTool(toolService.update(tool));
-	newKardex.setType('R'); //Repair
+	newKardex.setType("R"); //Repair
 	return this.save(newKardex);
     }
 
     public KardexEntity saveLend(KardexEntity newKardex){
 	LendEntity newLend = newKardex.getLend();
-	newKardex.setTool(toolService.save(newLend));
-	newKardex.setType('L'); //Lend
+	newKardex.setLend(lendService.save(newLend));
+	newKardex.setType("L"); //Lend
 	return this.save(newKardex);
+    }
 }

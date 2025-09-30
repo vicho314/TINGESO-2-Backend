@@ -28,16 +28,14 @@ public class LendService{
 	return (ArrayList<LendEntity>) lendRepo.findAll();
     }
 
-    public boolean save(LendEntity newLend){
-        lendRepo.save(newLend);
-	return true;
+    public LendEntity save(LendEntity newLend){
+        return lendRepo.save(newLend);
     }
 
     //FIXME: assume it already exists?
     // Should the repo, service or controller do the check?
-    public boolean update(LendEntity newLend){
-	lendRepo.save(newLend);
-	return true;
+    public LendEntity update(LendEntity newLend){
+	return lendRepo.save(newLend);
     }
 
     public boolean delete(Long id){

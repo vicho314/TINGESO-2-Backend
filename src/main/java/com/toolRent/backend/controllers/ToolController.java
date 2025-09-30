@@ -2,6 +2,8 @@ package com.toolRent.backend.controllers;
 
 import com.toolRent.backend.entities.ToolEntity;
 import com.toolRent.backend.services.ToolService;
+import com.toolRent.backend.entities.KardexEntity;
+import com.toolRent.backend.services.KardexService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -38,8 +40,8 @@ public class ToolController {
 	}
 
 	@PutMapping("/")
-	public boolean updateTool(@RequestBody ToolEntity tool){
-		boolean result = toolService.update(tool);
+	public ToolEntity updateTool(@RequestBody ToolEntity tool){
+		ToolEntity result = toolService.update(tool);
 		return result;
 	}
 
@@ -49,9 +51,9 @@ public class ToolController {
 		return result;
 	}
 
-	@PostMapping("/")
-        public boolean takeDown(@RequestBody ToolEntity tool){
-                boolean result = toolService.takeDown(tool);
+	@PostMapping("/takeDown/")
+        public ToolEntity takeDown(@RequestBody ToolEntity tool){
+                ToolEntity result = toolService.takeDown(tool);
                 return result;
         }
 }

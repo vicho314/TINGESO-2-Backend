@@ -29,14 +29,14 @@ public class LendController {
 	}	
 	
 	@PostMapping("/")
-	public boolean saveLend(@RequestBody LendEntity lend){
-		boolean result = lendService.save(lend);
+	public LendEntity saveLend(@RequestBody LendEntity lend){
+		LendEntity result = lendService.save(lend);
 		return result;
 	}
 
 	@PutMapping("/")
-	public boolean updateLend(@RequestBody LendEntity lend){
-		boolean result = lendService.update(lend);
+	public LendEntity updateLend(@RequestBody LendEntity lend){
+		LendEntity result = lendService.update(lend);
 		return result;
 	}
 
