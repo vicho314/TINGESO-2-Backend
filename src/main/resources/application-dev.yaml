@@ -4,13 +4,13 @@ spring:
     name: "backend"
 
   datasource:
-    # url: "jdbc:postgresql://${DB_HOST}:5432/tingeso"
-    # username: "postgres"
-    # password: "postgres"
+    url: "jdbc:postgresql://${DB_HOST}:5432/tingeso"
+    username: "postgres"
+    password: "postgres"
     # PROD
-    url: "${SPRING_DATASOURCE_URL}"
-    username: "${SPRING_DATASOURCE_USERNAME}"
-    password: "${SPRING_DATASOURCE_PASSWORD}"
+    # url: "${SPRING_DATASOURCE_URL}"
+    # username: "${SPRING_DATASOURCE_USERNAME}"
+    # password: "${SPRING_DATASOURCE_PASSWORD}"
 
     jpa:
       show-sql: true
