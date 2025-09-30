@@ -2,4 +2,6 @@
 Backend project for ToolRent business example, with Jenkins and Docker 
 integration.
 
+```
 mvn clean
+```
