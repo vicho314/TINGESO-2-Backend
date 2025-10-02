@@ -25,6 +25,7 @@ public class KardexEntity {
 
     //private String category;
     @Column(unique = true, nullable = false)
+    // Ingress, Lend, (d)evolution, Down, Repair
     private String type; //#FIXME: specify types
     @Column(nullable = false)
     private Date movementDate;

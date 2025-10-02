@@ -100,8 +100,26 @@ public class KardexService{
 	if(!toolService.isAvailable(newLend.getTool().getId())){
 		return new KardexEntity();
 	}
+	// FIXME: use save() for updating fields.
+	newLend.setState('P');
 	newKardex.setLend(lendService.save(newLend));
 	newKardex.setType("L"); //Lend
+	return this.save(newKardex);
+    }
+    
+    public KardexEntity returnTool(KardexEntity newKardex){
+        ToolEntity tool = newKardex.getTool();
+	char state = tool.getState();
+	// FIXME: check biz logic! D or B, or both??
+	if(state == 'D' || state == 'B'){
+		tool.setState('A');
+	}
+	tool.setStock(tool.getStock()+1);
+	newKardex.setTool(toolService.update(tool));
+	LendEntity lend = newKardex.getLend();
+	lend.setState('R'); //akin to delete, but save it for archive purposes.
+	newKardex.setLend(lendService.update(lend));
+	newKardex.setType("d"); //devolution
 	return this.save(newKardex);
     }
 }

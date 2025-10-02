@@ -23,6 +23,8 @@ public class LendEntity {
     @Column(unique = true, nullable = false)
     private Long id;
 
+    // Pending, Returned
+    private Character state;
     //private String category;
     //@Column(unique = true, nullable = false)
     @OneToOne
