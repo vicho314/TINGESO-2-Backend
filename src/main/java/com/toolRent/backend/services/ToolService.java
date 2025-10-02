@@ -59,4 +59,9 @@ public class ToolService{
 	newTool.setState('D'); // void is... pain.
     	return this.update(newTool);
     }
+
+    public boolean isAvailable(Long id){
+	   ToolEntity newTool = this.getById(id);
+	   return (newTool.getState() == 'A' && newTool.getStock() > 0);
+    }
 }

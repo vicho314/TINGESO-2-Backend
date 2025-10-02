@@ -97,6 +97,9 @@ public class KardexService{
 
     public KardexEntity saveLend(KardexEntity newKardex){
 	LendEntity newLend = newKardex.getLend();
+	if(!toolService.isAvailable(newLend.getTool().getId())){
+		return new KardexEntity();
+	}
 	newKardex.setLend(lendService.save(newLend));
 	newKardex.setType("L"); //Lend
 	return this.save(newKardex);
