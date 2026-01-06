@@ -16,8 +16,12 @@ public class FeeEntity {
     @Column(unique = true, nullable = false)
     private Long id;
 
-    @Column(unique = true, nullable = false)
-    private Integer lendFee;
     @Column(nullable = false)
-    private Integer delayFee;
+    private Double dailyLendingFee; // Daily fee for active lending
+    @Column(nullable = false)
+    private Double dailyLateFee; // Daily fee for overdue lending
+    @Column(name = "tool_id")
+    private Long toolId; // Tool-specific fee configuration
+    @Column(nullable = false)
+    private Integer replacementValue; // Replacement cost (admin only)
 }

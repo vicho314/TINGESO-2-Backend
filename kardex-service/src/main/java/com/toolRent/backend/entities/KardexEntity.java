@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import jakarta.persistence.*;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "kardex")
@@ -17,14 +17,15 @@ public class KardexEntity {
     @Column(unique = true, nullable = false)
     private Long id;
 
-    @Column(unique = true, nullable = false)
-    private String type;
     @Column(nullable = false)
-    private Date movementDate;
-    @Column(name = "employee_id")
-    private Long employeeId;
+    private String movementType; // LEND, RETURN, DAMAGE, REPAIR, MAINTENANCE
+    @Column(nullable = false)
+    private LocalDateTime movementDate;
     @Column(name = "lend_id")
     private Long lendId;
-    @Column(name = "tool_id")
+    @Column(name = "tool_id", nullable = false)
     private Long toolId;
+    private String description;
+    @Column(name = "created_by")
+    private Long createdBy;
 }

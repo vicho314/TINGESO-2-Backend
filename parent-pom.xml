@@ -20,11 +20,12 @@
 		<module>config-server</module>
 		<module>api-gateway</module>
 		<module>client-service</module>
-		<module>employee-service</module>
 		<module>fee-service</module>
 		<module>kardex-service</module>
 		<module>lend-service</module>
 		<module>tool-service</module>
+		<module>reports-service</module>
+		<module>user-service</module>
 	</modules>
 
 	<properties>

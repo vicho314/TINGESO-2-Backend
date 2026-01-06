@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import jakarta.persistence.*;
 import java.time.*;
-import java.util.List;
 
 @Entity
 @Table(name = "client")
@@ -31,6 +30,8 @@ public class ClientEntity {
     //private String rutLastDigit;
     @Column(unique = true, nullable = false)
     private String rut;
+    private LocalDateTime restrictedSince;
+    private String restrictionReason;
     //@JoinTable(
     //	name = "client_transaction",
     //	joinColumns = @JoinColumn(name = "client_id"),

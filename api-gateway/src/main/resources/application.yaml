@@ -13,13 +13,6 @@ spring:
           filters:
             - StripPrefix=0
 
-        - id: employee-service
-          uri: lb://employee-service
-          predicates:
-            - Path=/api/v1/employee/**
-          filters:
-            - StripPrefix=0
-
         - id: fee-service
           uri: lb://fee-service
           predicates:
@@ -45,6 +38,20 @@ spring:
           uri: lb://tool-service
           predicates:
             - Path=/api/v1/tool/**
+          filters:
+            - StripPrefix=0
+
+        - id: reports-service
+          uri: lb://reports-service
+          predicates:
+            - Path=/api/v1/reports/**
+          filters:
+            - StripPrefix=0
+
+        - id: user-service
+          uri: lb://user-service
+          predicates:
+            - Path=/api/v1/user/**
           filters:
             - StripPrefix=0
 

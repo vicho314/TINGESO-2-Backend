@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import jakarta.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "lend")
@@ -22,7 +22,9 @@ public class LendEntity {
     private Long clientId;
     @Column(name = "tool_id")
     private Long toolId;
-    private Date deliveryDay;
+    private LocalDate deliveryDay;
     @Column(nullable = false)
-    private Date returnDay;
+    private LocalDate returnDay;
+    private Long lateFeeId;
+    private Boolean isBlocked;
 }

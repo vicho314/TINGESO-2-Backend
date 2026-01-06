@@ -41,4 +41,12 @@ public class ToolController {
 		boolean result = toolService.delete(id);
 		return result;
 	}
+	
+	@PutMapping("/{id}/takedown")
+	public boolean takedownTool(
+		@PathVariable Long id,
+		@RequestParam Long userId,
+		@RequestParam String reason) {
+		return toolService.takedownTool(id, userId, reason);
+	}
 }

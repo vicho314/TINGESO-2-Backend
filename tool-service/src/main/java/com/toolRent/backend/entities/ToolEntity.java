@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import jakarta.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "tool")
@@ -26,6 +27,8 @@ public class ToolEntity {
     @Column(name = "fee_id")
     private Long feeId;
     private Integer stock;
+    private LocalDateTime takedownDate;
+    private String takedownReason;
 
     public boolean validState(){
     	boolean result;

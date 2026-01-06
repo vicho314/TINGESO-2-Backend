@@ -42,4 +42,24 @@ public class ClientController {
 		boolean result = clientService.delete(id);
 		return result;
 	}
+	
+	@PutMapping("/{id}/check-restrictions")
+	public boolean checkAndRestrictClient(@PathVariable Long id) {
+		return clientService.checkAndRestrictClient(id);
+	}
+	
+	@PutMapping("/{id}/unrestrict")
+	public boolean unrestrictClient(@PathVariable Long id) {
+		return clientService.unrestrictClient(id);
+	}
+	
+	@GetMapping("/{id}/state")
+	public String getClientState(@PathVariable Long id) {
+		return clientService.getClientState(id);
+	}
+	
+	@GetMapping("/restricted/list")
+	public List<ClientEntity> getRestrictedClients() {
+		return clientService.getRestrictedClients();
+	}
 }
