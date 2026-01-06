@@ -1,0 +1,59 @@
+spring:
+  application:
+    name: api-gateway
+  config:
+    import: configserver:http://localhost:8888
+  cloud:
+    gateway:
+      routes:
+        - id: client-service
+          uri: lb://client-service
+          predicates:
+            - Path=/api/v1/client/**
+          filters:
+            - StripPrefix=0
+
+        - id: employee-service
+          uri: lb://employee-service
+          predicates:
+            - Path=/api/v1/employee/**
+          filters:
+            - StripPrefix=0
+
+        - id: fee-service
+          uri: lb://fee-service
+          predicates:
+            - Path=/api/v1/fee/**
+          filters:
+            - StripPrefix=0
+
+        - id: kardex-service
+          uri: lb://kardex-service
+          predicates:
+            - Path=/api/v1/kardex/**
+          filters:
+            - StripPrefix=0
+
+        - id: lend-service
+          uri: lb://lend-service
+          predicates:
+            - Path=/api/v1/lend/**
+          filters:
+            - StripPrefix=0
+
+        - id: tool-service
+          uri: lb://tool-service
+          predicates:
+            - Path=/api/v1/tool/**
+          filters:
+            - StripPrefix=0
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+
+server:
+  port: 8080
